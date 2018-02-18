@@ -20,6 +20,7 @@ public:
 	bool gameOver;
 
 protected:
+	Color _color;
 	UIRectangle _pic;
 	Navigator _nav;
 	Vertex _lastPos;

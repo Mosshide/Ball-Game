@@ -18,8 +18,8 @@ Bar::~Bar()
 void Bar::update()
 {
 	vel = 0.f;
-	if (keyboard->getKey('d') == keyHold) vel += 1.f;
-	if (keyboard->getKey('a') == keyHold) vel -= 1.f;
+	if (keyboard->getKey('d') == keyHold) vel += 1.5f;
+	if (keyboard->getKey('a') == keyHold) vel -= 1.5f;
 	offsetPosition(gameTimer.getDelta() * vel, 0.f);
 
 	if (presence.x < 0.f) presence.x = 0.f;
