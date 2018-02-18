@@ -1,0 +1,23 @@
+#version 330
+
+uniform mat4 projection;
+uniform mat4 camera;
+uniform mat4 modelTranslation;
+uniform mat4 modelRotation;
+uniform mat4 modelScale;
+
+in vec3 LVertexPos3D;
+in vec2 LTexCoord;
+in vec3 normal;
+out vec2 texCoord;
+varying vec3 throughNormal;
+varying vec3 FragPos;
+
+void main()
+{					
+	texCoord = LTexCoord;
+	mat4 model = modelTranslation * modelRotation * modelScale;
+	gl_Position = projection * camera * model * vec4( LVertexPos3D, 1.0 );
+	FragPos = vec3(model * vec4(LVertexPos3D, 1.0));
+	throughNormal = normal;
+}

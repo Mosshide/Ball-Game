@@ -1,0 +1,13 @@
+#version 330
+
+uniform mat4 projection;
+
+in vec3 LVertexPos3D;
+in vec2 LTexCoord;
+out vec2 texCoord;
+
+void main()
+{					
+	texCoord = LTexCoord;
+	gl_Position = projection * vec4( LVertexPos3D.x, LVertexPos3D.y, 0.0, 1.0 );
+}

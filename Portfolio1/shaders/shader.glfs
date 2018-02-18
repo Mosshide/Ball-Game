@@ -1,0 +1,20 @@
+#version 330
+
+uniform vec4 LTextureColor;
+uniform sampler2D LTextureUnit;
+uniform vec3 lightPos;
+
+in vec2 texCoord;
+varying vec3 throughNormal; 
+varying vec3 FragPos;    
+out vec4 fragColor;
+
+void main()
+{
+	vec3 norm = normalize(throughNormal);
+	vec3 lightDir = normalize(lightPos - FragPos); 
+	float diff = max(dot(norm, lightDir), 0) + .3;
+
+	vec4 finalColor = vec4(diff * LTextureColor.x, diff * LTextureColor.y, diff * LTextureColor.z, LTextureColor.w);
+	fragColor = texture( LTextureUnit, texCoord ) * finalColor;
+}
